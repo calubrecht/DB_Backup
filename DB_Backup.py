@@ -10,8 +10,8 @@ def getDropboxClient(configFile):
   configParser = ConfigParser.RawConfigParser()
   p = os.path.dirname(os.path.realpath(__file__))
   configParser.read(p + os.sep + configFile)
-  token = configParser("DB_Backup", 'token')
-  return dropbox.DropBox(token)
+  token = configParser.get("DB_Backup", 'token')
+  return dropbox.Dropbox(token)
 
 
 def uploadFile(client, fileName, uploadPath):
@@ -27,7 +27,7 @@ def uploadFile(client, fileName, uploadPath):
   client.files_upload_session_finish(
     None,
     dropbox.files.UploadSessionCursor(sessionId, i),
-    dropbox.files.CommitInfo(uploadPath + filename, autorename=True))
+    dropbox.files.CommitInfo(uploadPath + fileName, autorename=True))
   
 
 def purgeOldFiles(client, fileName, numberToPreserve):
@@ -45,3 +45,6 @@ if __name__ == '__main__':
     parser.print_help()
     sys.exit(1)
   print  str(args)
+  dbc = getDropboxClient(args.config)
+  uploadFile(dbc, args.fileName, '/')
+
