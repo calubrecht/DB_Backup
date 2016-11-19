@@ -8,4 +8,6 @@ To begin with, at least, you will need to generate a developer API token: See in
 This is a python script, so python and the dropbox python api v2 will need to be installed.
 
 Expected usage:
-pythong DB\_Backup.py -c DB\_Backup.conf <options> \[fileName\]
+python DB\_Backup.py -c DB\_Backup.cfg <options> \[fileName\]
+
+The API token will be stored in the DB\_Backup.cfg file, under the config option "token"
