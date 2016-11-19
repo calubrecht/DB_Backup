@@ -27,11 +27,8 @@ def uploadFile(client, fileName, uploadPath):
   client.files_upload_session_finish(
     None,
     dropbox.files.UploadSessionCursor(sessionId, i),
-    dropbox.files.CommitInfo(uploadPath + fileName, autorename=True))
+    dropbox.files.CommitInfo(uploadPath + fileName, autorename=False, mode=dropbox.files.WriteMode.overwrite))
   
-
-def purgeOldFiles(client, fileName, numberToPreserve):
-  pass
 
 if __name__ == '__main__':
   from argparse import ArgumentParser
@@ -39,12 +36,18 @@ if __name__ == '__main__':
   parser = ArgumentParser()
   parser.add_argument('-c', action='store', dest='config', help="specify file for configuration options, default " + DEFAULT_CONFIGFILE, default=DEFAULT_CONFIGFILE)
   parser.add_argument('fileName', action='store', help="specify file for configuration options, default " + DEFAULT_CONFIGFILE, default=DEFAULT_CONFIGFILE)
+  parser.add_argument('destination', action='store', nargs='?', help="Detination folder", default='/')
   args = parser.parse_args()
   
   if not args:
     parser.print_help()
     sys.exit(1)
-  print  str(args)
+  
   dbc = getDropboxClient(args.config)
-  uploadFile(dbc, args.fileName, '/')
+  dest = args.destination
+  if not dest.startswith('/'):
+    dest = '/' + dest
+  if not dest.endswith('/'):
+    dest =  dest + '/'
+  uploadFile(dbc, args.fileName, dest)
 

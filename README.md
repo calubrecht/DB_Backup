@@ -1,7 +1,7 @@
 # DB\_Backup
 A python script to backup files to a Dropbox account
 
-DB\_Backup is a project intended to progammaticlly copy a file to a DropBox account. Configuration options will exist to control the number of previous backups to keep and when to purge old backups.
+DB\_Backup is a project intended to progammaticlly copy a file to a DropBox account. It is intended for regular backups, so previous versions are available through DropbBox's interface for 30 days
 
 To begin with, at least, you will need to generate a developer API token: See instructions on dropbox's developer blog. https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/
 
