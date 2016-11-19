@@ -5,7 +5,7 @@ DB\_Backup is a project intended to progammaticlly copy a file to a DropBox acco
 
 To begin with, at least, you will need to generate a developer API token: See instructions on dropbox's developer blog. https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/
 
-This is a python script, so python and the dropbox python api v2 will need to be installed.
+This is a python script, so python and the dropbox python api v2 will need to be installed. It relies on pyhon 2.7 for the argparse library
 
 Expected usage:
 python DB\_Backup.py -c DB\_Backup.cfg <options> \[fileName\]
