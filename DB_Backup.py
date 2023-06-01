@@ -1,4 +1,4 @@
-import ConfigParser
+import configparser as ConfigParser
 import dropbox
 import os
 
@@ -11,7 +11,9 @@ def getDropboxClient(configFile):
   p = os.path.dirname(os.path.realpath(__file__))
   configParser.read(p + os.sep + configFile)
   token = configParser.get("DB_Backup", 'token')
-  return dropbox.Dropbox(token)
+  key = configParser.get("DB_Backup", 'key')
+  secret = configParser.get("DB_Backup", 'secret')
+  return dropbox.Dropbox(app_key=key, app_secret=secret, oauth2_refresh_token=token)
 
 
 def uploadFile(client, fileName, uploadPath):

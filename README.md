@@ -10,4 +10,5 @@ This is a python script, so python and the dropbox python api v2 will need to be
 Expected usage:
 python DB\_Backup.py -c DB\_Backup.cfg <options> \[fileName\]
 
-The API token will be stored in the DB\_Backup.cfg file, under the config option "token"
+The API Refresh token will be stored in the DB\_Backup.cfg file, under the config option "token"
+API keys/secret for your dropbox app must be stored in the key and secret options in DB\_Backup.cfg
